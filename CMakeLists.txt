@@ -1,0 +1,40 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(auv_msgs)
+
+find_package(catkin REQUIRED COMPONENTS
+  std_msgs
+  sensor_msgs
+  geometry_msgs
+  geographic_msgs
+  message_generation
+)
+
+add_message_files(
+  DIRECTORY
+    msg
+  FILES
+    BodyForceReq.msg
+    BodyVelocityReq.msg
+    NavSts.msg
+    NED.msg
+    NEDArray.msg
+    VehiclePose.msg
+    VehiclePoseArray.msg
+)
+
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+  sensor_msgs
+  geometry_msgs
+  geographic_msgs
+)
+
+catkin_package(
+  CATKIN_DEPENDS
+    geographic_msgs
+    geometry_msgs
+    std_msgs
+    sensor_msgs
+    message_runtime
+)
