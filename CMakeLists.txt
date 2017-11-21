@@ -13,13 +13,14 @@ add_message_files(
   DIRECTORY
     msg
   FILES
-    BodyForceReq.msg
-    BodyVelocityReq.msg
-    NavSts.msg
+    BodyForceRequest.msg
+    BodyVelocityRequest.msg
+    NavigationStatus.msg
     NED.msg
     NEDArray.msg
     VehiclePose.msg
     VehiclePoseArray.msg
+    WorldWaypointRequest.msg
 )
 
 generate_messages(
