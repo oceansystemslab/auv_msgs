@@ -2,8 +2,8 @@
 Changelog for package auv_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.1 (2020-07-07)
+------------------
 * Bump CMake version to prevent CMP0048
 * Contributors: Bence Magyar
 
