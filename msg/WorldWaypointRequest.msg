@@ -1,6 +1,6 @@
 # World frame (absolute) waypoint request to pilot.
 
-Header header
+std_msgs/Header header
 
 # Waypoint request
 auv_msgs/NED position

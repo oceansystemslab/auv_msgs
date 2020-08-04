@@ -4,7 +4,7 @@
 # to simplify integration with arm control systems.
 
 # header.frame_id should be set to the base_link frame of the vehicle.
-Header header
+std_msgs/Header header
 
 geometry_msgs/Wrench wrench
 
