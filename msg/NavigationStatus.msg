@@ -1,6 +1,6 @@
 # Sent by the navigator at 5-10 Hz.
 
-Header 	header
+std_msgs/Header 	header
 
 geographic_msgs/GeoPoint global_position
 geographic_msgs/GeoPoint origin

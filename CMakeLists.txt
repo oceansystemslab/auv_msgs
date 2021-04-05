@@ -1,41 +1,54 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(auv_msgs)
 
-find_package(catkin REQUIRED COMPONENTS
-  std_msgs
-  sensor_msgs
-  geometry_msgs
-  geographic_msgs
-  message_generation
-)
+# Default to C99
+if(NOT CMAKE_C_STANDARD)
+  set(CMAKE_C_STANDARD 99)
+endif()
 
-add_message_files(
-  DIRECTORY
-    msg
-  FILES
-    BodyForceRequest.msg
-    BodyVelocityRequest.msg
-    NavigationStatus.msg
-    NED.msg
-    NEDArray.msg
-    VehiclePose.msg
-    VehiclePoseArray.msg
-    WorldWaypointRequest.msg
-)
+# Default to C++14
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
+endif()
 
-generate_messages(
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(geographic_msgs REQUIRED)
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # uncomment the line when a copyright and license is not present in all source files
+  #set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # uncomment the line when this package is not in a git repo
+  #set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+find_package(rosidl_default_generators REQUIRED)
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+    msg/BodyForceRequest.msg
+    msg/BodyVelocityRequest.msg
+    msg/NavigationStatus.msg
+    msg/NED.msg
+    msg/NEDArray.msg
+    msg/VehiclePose.msg
+    msg/VehiclePoseArray.msg
+    msg/WorldWaypointRequest.msg
   DEPENDENCIES
-  std_msgs
-  sensor_msgs
-  geometry_msgs
-  geographic_msgs
-)
-
-catkin_package(
-  CATKIN_DEPENDS
-    geographic_msgs
-    geometry_msgs
     std_msgs
     sensor_msgs
-    message_runtime
+    geometry_msgs
+    geographic_msgs
 )
+
+ament_package()
